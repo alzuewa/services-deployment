@@ -1,6 +1,6 @@
 galaxy_info:
-  role_name: Preconfig
-  description: Setup servers
+  role_name: Deploy
+  description: Deploy microservers to Docker cluster
   license: MIT
   min_ansible_version: 2.9
   author: put the name here

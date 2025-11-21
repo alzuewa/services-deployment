@@ -1,3 +1,0 @@
----
-- name: Dummy role for dependencies
-  command: echo "Dummy"

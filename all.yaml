@@ -1,8 +1,26 @@
 ---
-- name: All roles
-  hosts: cluster
+- name: For deploy
+  hosts: deploy
   roles:
-    - preconfig
-    - dummy
+    - role: preconfig
+      tags: preconfig
+    - role: deploy
+      test: 0   # this will be passed to deploy playbook below
+      tag: deploy
+    - swarm_init
 
-# ansible-playbook -i inventory all.yaml -K
+- name: For manager
+  hosts: managers
+  roles:
+    - role: preconfig
+      tags: preconfig
+    - swarm_init
+
+- name: For worker
+  hosts: workers
+  roles:
+    - role: preconfig
+      tags: preconfig
+    - swarm_join
+
+# `ansible-playbook -i inventory all.yaml --tags "deploy" -K
