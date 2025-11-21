@@ -1,5 +1,12 @@
-argument_specs:
-  main:
-    short_description: Setup servers
+galaxy_info:
+  role_name: Preconfig
+  description: Setup servers
+  license: MIT
+  min_ansible_version: 2.9
+  author: put the name here
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
 dependencies:
   - role: dummy
