@@ -1,6 +1,6 @@
 ---
 - name: Pre-config
-  hosts: demo
+  hosts: cluster
   tasks:
     - name: Install Docker
       become: true
@@ -74,4 +74,4 @@
         - name: Reboot the server
           reboot:
 
-# ansible-playbook -i demo-server config.yaml -K
+# ansible-playbook -i inventory config.yaml -K
