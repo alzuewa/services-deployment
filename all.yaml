@@ -1,0 +1,7 @@
+---
+- name: All roles
+  hosts: cluster
+  roles:
+    - preconfig
+
+# ansible-playbook -i inventory all.yaml -K
