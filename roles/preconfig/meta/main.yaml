@@ -1,3 +1,5 @@
 argument_specs:
   main:
     short_description: Setup servers
+dependencies:
+  - role: dummy

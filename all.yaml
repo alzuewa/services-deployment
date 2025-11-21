@@ -3,5 +3,6 @@
   hosts: cluster
   roles:
     - preconfig
+    - dummy
 
 # ansible-playbook -i inventory all.yaml -K
