@@ -1,0 +1,4 @@
+---
+rmq:
+  user: <ansible-encrypted-value>
+  password: <ansible-encrypted-value>
