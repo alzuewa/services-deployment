@@ -29,5 +29,13 @@
     - role: swarm_join
       type: worker
       tags: swarm_join
+  post_tasks:    # is executed for all hosts, not for workers only. And is only executed after a role if it has the role tag
+    - name: Clear 'tokens' directory
+      file:
+        path: ./tokens
+        state: absent
+      delegate_to: localhost
+      ignore_errors: true
+      tags: swarm_join
 
-# `ansible-playbook -i inventory all.yaml --tags "deploy" -K
+# `ansible-playbook -i inventory all.yaml --tags "swarm_init, swarm_join"
