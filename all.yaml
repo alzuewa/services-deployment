@@ -1,5 +1,5 @@
 ---
-- name: For deploy
+- name: For deploy and Build
   hosts: deploy
   roles:
     - role: preconfig
@@ -7,6 +7,8 @@
     - role: deploy
       test: 0   # this will be passed to deploy playbook below
       tag: deploy
+    - role: build
+      tags: build
     - swarm_init
 
 - name: For manager

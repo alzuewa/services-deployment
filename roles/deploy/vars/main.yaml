@@ -1,5 +1,2 @@
 ---
-services:
-  - api
-
-networkName: custom_app_network
+network_name: custom_app_network

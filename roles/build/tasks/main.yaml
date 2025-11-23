@@ -1,0 +1,24 @@
+---
+- name: Checkout the repo
+  ansible.builtin.git:
+    repo: "https://github.com/path/to/our/repo.git"
+    dest: "{{ git_directory }}"
+    version: <our-target-branch>
+
+- name: Build an image
+  community.docker.docker_image:
+    name: "{{ registry_name }}{{ item.name }}"
+    tag: "{{ item.version }}"
+    push: true
+    source: build
+    build:
+      path: "{{ git_directory }}" # context
+      dockerfile: "{{ git_directory }}/apps/{{ item.name }}/Dockerfile"
+  loop: "{{ services | difference(non_build_services) }}"
+
+- name: Delete repo
+  file:
+    state: absent
+    path: "{{ git_directory }}"
+
+# Clone the repo -- Build the service image from Dockerfile -- Push the image to registry

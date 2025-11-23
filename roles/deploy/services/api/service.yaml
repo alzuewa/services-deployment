@@ -7,10 +7,10 @@
   - name: "[{{ service_name }}]: deploy service"
     community.docker.docker_swarm_service:
       name: "{{ service_name }}"
-      image: "localhost:5000/{{ service_name }}:latest"
+      image: "{{ registry_name }}{{ service_name }}:{{ version }}"  # `version` var will be available because it is set up in deploy/tasks/main.yaml
       state: present
       networks:
-        name: "{{ networkName }}"
+        name: "{{ network_name }}"
       publish:
         - mode: ingress
           protocol: tcp
