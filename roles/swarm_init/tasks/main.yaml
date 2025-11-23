@@ -5,13 +5,11 @@
     advertise_addr: "{{ advertise_addr }}"
   register: token
 
-- name: Directory existence
-  file:
-    path: ./tokens
-    state: directory
-    mode: '0777'
-  delegate_to: localhost
-  notify: Test  # handler name
+- name: Store tokens
+  set_fact:
+    token_manager: "{{ token.swarm_facts.JoinTokens.Manager }}"
+    token_worker: "{{ token.swarm_facts.JoinTokens.Worker }}"
+    cacheable: true
 
 - name: Store manager token
   copy:
