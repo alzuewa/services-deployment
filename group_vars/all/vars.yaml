@@ -25,6 +25,8 @@ non_build_services:
   - name: rmq
     version: latest
 
-versions:
+configs:
+  converter:
+    queue: q_imageProcessor
 
 

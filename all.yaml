@@ -4,11 +4,11 @@
   roles:
     - role: preconfig
       tags: preconfig
+    - role: build
+      tags: build
     - role: deploy
       test: 0   # this will be passed to deploy playbook below
       tag: deploy
-    - role: build
-      tags: build
     - swarm_init
 
 - name: For manager

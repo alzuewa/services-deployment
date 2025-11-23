@@ -1,7 +1,7 @@
 ---
 - name: Checkout the repo
   ansible.builtin.git:
-    repo: "https://github.com/path/to/our/repo.git"
+    repo: "https://github.com/path/to/our/repo.git"  # repo with services' Dockerfiles and dependencies files
     dest: "{{ git_directory }}"
     version: <our-target-branch>
 

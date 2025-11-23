@@ -1,0 +1,17 @@
+---
+- name: "[{{ service_name }}]: secret configuration"
+  include: "../secret.yaml"
+
+- name: "[{{ service_name }}]: deploy service"
+  block:
+  - name: "[{{ service_name }}]: deploy service"
+    community.docker.docker_swarm_service:
+      name: "{{ service_name }}"
+      image: "{{ registry_name }}{{ service_name }}:{{ version }}"  # `version` var will be available because it is set up in deploy/tasks/main.yaml
+      state: present
+      networks:
+        name: "{{ network_name }}"
+      secrets:
+        - secret_name: "{{ service_name }}.env"
+          filename: "/opt/app/.env"
+  tags: "{{ service_name }}"
