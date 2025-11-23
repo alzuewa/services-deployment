@@ -9,6 +9,7 @@
       name: "{{ service_name }}"
       image: "{{ registry_name }}{{ service_name }}:{{ version }}"  # `version` var will be available because it is set up in deploy/tasks/main.yaml
       state: present
+      force_update: true
       networks:
         name: "{{ network_name }}"
       publish:

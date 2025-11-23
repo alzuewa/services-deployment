@@ -10,6 +10,8 @@
     name: "{{ registry_name }}{{ item.name }}"
     tag: "{{ item.version }}"
     push: true
+    force_source: true
+    force_tag: true
     source: build
     build:
       path: "{{ git_directory }}" # context

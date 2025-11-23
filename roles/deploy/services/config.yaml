@@ -1,0 +1,15 @@
+---
+- name: "[{{ service_name }}]: config configuration"
+  block:
+    - name: "[{{ service_name }}]: create a config"
+      include: "config-create.yaml"
+  tags: "{{ service_name }}"
+
+  rescue:   # this is to handle a case when a config is changed
+    - name: "[{{ service_name }}]: deleting service"
+      community.docker.docker_swarm_service:
+        name: "{{ service_name }}"
+        state: absent
+
+    - name: "[{{ service_name }}]: create a config"
+      include: "config-create.yaml"
