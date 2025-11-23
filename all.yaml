@@ -9,20 +9,25 @@
     - role: deploy
       test: 0   # this will be passed to deploy playbook below
       tag: deploy
-    - swarm_init
+    - role: swarm_init
+      tags: swarm_init
 
 - name: For manager
   hosts: managers
   roles:
     - role: preconfig
       tags: preconfig
-    - swarm_init
+    - role: swarm_join
+      type: manager
+      tags: swarm_join
 
 - name: For worker
   hosts: workers
   roles:
     - role: preconfig
       tags: preconfig
-    - swarm_join
+    - role: swarm_join
+      type: worker
+      tags: swarm_join
 
 # `ansible-playbook -i inventory all.yaml --tags "deploy" -K

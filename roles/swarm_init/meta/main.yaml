@@ -1,0 +1,10 @@
+galaxy_info:
+  role_name: Swarm-init
+  description: Swarm cluster initialization
+  license: MIT
+  min_ansible_version: 2.9
+  author: put the name here
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
